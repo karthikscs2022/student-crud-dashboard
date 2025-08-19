@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link rel="stylesheet" href="/student.css">
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Student Dashboard</h1>
+                <p>Manage your student records efficiently</p>
+            </div>
+
+            <div class="content">
+                <a href="/students/add" class="add-student-btn">Add New Student</a>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>AGE</th>
+                            <th>DEPARTMENT</th>
+                            <th colspan="2">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Your EJS loop would replace the sample data above -->
+                        <%students.forEach(student=>{ %>
+                            <tr>
+                                <td class="student-id">
+                                    <%=student.id%>
+                                </td>
+                                <td class="student-name">
+                                    <%=student.name%>
+                                </td>
+                                <td class="student-age">
+                                    <%=student.age%>
+                                </td>
+                                <td><span class="student-department">
+                                        <%=student.department%>
+                                    </span></td>
+                                <td colspan="2">
+                                    <div class="action-links">
+                                        <a href="/students/delete/<%=student.id%>" class="delete-btn">Delete</a>
+                                        <a href="/students/edit/<%= student.id %>" class="update-btn">Update</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% })%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+
+
+</html>

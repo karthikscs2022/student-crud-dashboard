@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Details</title>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-icon"></div>
+
+        <div class="form-header">
+            <h1>Edit Student Details</h1>
+            <p>Update the information for this student</p>
+        </div>
+
+        <div class="student-info">
+            <h3>Currently Editing:</h3>
+            <p>Student ID: <strong>
+                    <%= student.id %>
+                </strong></p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Student details updated successfully!
+        </div>
+
+        <!-- Your EJS template would look like this: -->
+        <form action="/students/edit/<%= student.id %>" method="post" id="editForm">
+            <div class="form-group">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" name="name" value="<%= student.name %>" data-original="<%= student.name %>"
+                    required />
+                <div class="change-indicator">!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="<%= student.age %>" data-original="<%= student.age %>"
+                    min="16" max="100" required />
+                <div class="change-indicator">!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" value="<%= student.department %>"
+                    data-original="<%= student.department %>" required />
+                <div class="change-indicator">!</div>
+            </div>
+
+            <div class="form-actions">
+                <a href="/students" class="cancel-btn">Cancel</a>
+                <button type="submit" class="submit-btn" id="submitBtn">Update Student</button>
+            </div>
+        </form>
+
+
+        <div class="back-link">
+            <a href="/students">← Back to Dashboard</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Track changes to form fields
+        document.querySelectorAll('input').forEach(input => {
+            const originalValue = input.dataset.original;
+
+            input.addEventListener('input', function () {
+                const formGroup = this.closest('.form-group');
+
+                if (this.value !== originalValue) {
+                    this.classList.add('changed');
+                    formGroup.classList.add('has-changes');
+                } else {
+                    this.classList.remove('changed');
+                    formGroup.classList.remove('has-changes');
+                }
+
+                // Update submit button text based on changes
+                updateSubmitButton();
+            });
+
+            input.addEventListener('blur', function () {
+                if (this.value.trim() === '') {
+                    this.style.borderColor = '#dc3545';
+                } else if (this.value !== originalValue) {
+                    this.style.borderColor = '#ffc107';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+        });
+
+        function updateSubmitButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            const hasChanges = document.querySelector('.has-changes');
+
+            if (hasChanges) {
+                submitBtn.textContent = 'Save Changes';
+                submitBtn.style.background = 'linear-gradient(135deg, #ffc107 0%, #fd7e14 100%)';
+            } else {
+                submitBtn.textContent = 'Update Student';
+                submitBtn.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Updating...';
+            submitBtn.disabled = true;
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>

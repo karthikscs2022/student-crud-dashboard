@@ -1,0 +1,236 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: #f5f7fa;
+     color: #333;
+     line-height: 1.6;
+     padding: 20px;
+ }
+
+ .container {
+     max-width: 1200px;
+     margin: 0 auto;
+     background: white;
+     border-radius: 10px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+ }
+
+ .header {
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     padding: 30px;
+     color: white;
+     text-align: center;
+ }
+
+ .header h1 {
+     font-size: 2.5rem;
+     margin-bottom: 10px;
+     font-weight: 300;
+ }
+
+ .header p {
+     opacity: 0.9;
+     font-size: 1.1rem;
+ }
+
+ .content {
+     padding: 30px;
+ }
+
+ .add-student-btn {
+     display: inline-block;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     color: white;
+     text-decoration: none;
+     padding: 12px 24px;
+     border-radius: 6px;
+     font-weight: 500;
+     margin-bottom: 30px;
+     transition: all 0.3s ease;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ .add-student-btn:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+ }
+
+ .add-student-btn::before {
+     content: "+";
+     margin-right: 8px;
+     font-size: 1.2rem;
+     font-weight: bold;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+     background: white;
+     border-radius: 8px;
+     overflow: hidden;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ }
+
+ th {
+     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+     color: #495057;
+     font-weight: 600;
+     text-transform: uppercase;
+     font-size: 0.85rem;
+     letter-spacing: 0.5px;
+     padding: 16px 12px;
+     text-align: left;
+     border-bottom: 2px solid #dee2e6;
+ }
+
+ td {
+     padding: 16px 12px;
+     border-bottom: 1px solid #f1f3f4;
+     vertical-align: middle;
+ }
+
+ tr:hover {
+     background-color: #f8f9ff;
+     transform: scale(1.001);
+     transition: all 0.2s ease;
+ }
+
+ tr:last-child td {
+     border-bottom: none;
+ }
+
+ .action-links {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+ }
+
+ .action-links a {
+     text-decoration: none;
+     padding: 6px 12px;
+     border-radius: 4px;
+     font-size: 0.9rem;
+     font-weight: 500;
+     transition: all 0.3s ease;
+     border: 1px solid transparent;
+ }
+
+ .delete-btn {
+     background: #fee;
+     color: #dc3545;
+     border-color: #dc3545;
+ }
+
+ .delete-btn:hover {
+     background: #dc3545;
+     color: white;
+     transform: translateY(-1px);
+ }
+
+ .update-btn {
+     background: #e8f5e8;
+     color: #28a745;
+     border-color: #28a745;
+ }
+
+ .update-btn:hover {
+     background: #28a745;
+     color: white;
+     transform: translateY(-1px);
+ }
+
+ .student-id {
+     font-weight: 600;
+     color: #6c757d;
+     font-family: 'Courier New', monospace;
+ }
+
+ .student-name {
+     font-weight: 600;
+     color: #495057;
+ }
+
+ .student-age {
+     color: #6c757d;
+ }
+
+ .student-department {
+     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+     padding: 4px 8px;
+     border-radius: 12px;
+     font-size: 0.9rem;
+     font-weight: 500;
+     color: #495057;
+     display: inline-block;
+ }
+
+ .empty-state {
+     text-align: center;
+     padding: 60px 20px;
+     color: #6c757d;
+ }
+
+ .empty-state h3 {
+     margin-bottom: 10px;
+     color: #495057;
+ }
+
+ @media (max-width: 768px) {
+     .container {
+         margin: 10px;
+         border-radius: 0;
+     }
+
+     .header {
+         padding: 20px;
+     }
+
+     .header h1 {
+         font-size: 2rem;
+     }
+
+     .content {
+         padding: 20px;
+     }
+
+     table {
+         font-size: 0.9rem;
+     }
+
+     th,
+     td {
+         padding: 12px 8px;
+     }
+
+     .action-links {
+         flex-direction: column;
+         gap: 5px;
+     }
+
+     .action-links a {
+         font-size: 0.8rem;
+         padding: 4px 8px;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .header h1 {
+         font-size: 1.8rem;
+     }
+
+     table {
+         font-size: 0.8rem;
+     }
+
+     th,
+     td {
+         padding: 10px 6px;
+     }
+ }
